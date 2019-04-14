@@ -1,3 +1,6 @@
+if (!process.env.SERVERPORT) {
+  throw Error('Please set env var SERVERPORT')
+}
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
@@ -13,7 +16,7 @@ const image = require('./controllers/image');
 const db = require('knex')({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
+      host : 'postgresql-slippery-59422',
       user : 'postgres',
       password : '123',
       database : 'smart-brain'
@@ -35,8 +38,8 @@ app.put('/image', (req, res) => { image.handleImage(req, res, db) })
 app.post('/imageurl', (req, res) => { image.handleApiCall(req, res) })
 
 // set server port
-app.listen(process.env.PORT || 3000, () => {
-    console.log(`app is running on port ${process.env.PORT}`)
+app.listen(process.env.SERVERPORT || 3000, () => {
+    console.log(`app is running on port ${process.env.SERVERPORT}`)
 });
 
 /*

@@ -1,8 +1,12 @@
+// Reminder to set env var
+if (!process.env.CLFAPIKEY) {
+    throw Error('Please set env var CLFAPIKEY')
+}
 const Clarifai = require('clarifai');
 
 const app = new Clarifai.App({
     apiKey: process.env.CLFAPIKEY, // Enter your API Key from Clarifai
-   });
+   })
 
 const handleApiCall = (req, res) => {
     // passes req input from front end to Clarifai FACE_DETECT_MODEL api and res with face detection obj
