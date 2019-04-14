@@ -16,10 +16,8 @@ const image = require('./controllers/image');
 const db = require('knex')({
     client: 'pg',
     connection: {
-      host : 'postgresql-slippery-59422',
-      user : 'postgres',
-      password : '123',
-      database : 'smart-brain'
+      host : process.env.DATABASE_URL,
+      ssl: true
     }
   });
 
