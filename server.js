@@ -1,5 +1,5 @@
-if (!process.env.SERVERPORT) {
-  throw Error('Please set env var SERVERPORT')
+if (!process.env.PORT) {
+  throw Error('Please set env var PORT')
 }
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -38,8 +38,8 @@ app.put('/image', (req, res) => { image.handleImage(req, res, db) })
 app.post('/imageurl', (req, res) => { image.handleApiCall(req, res) })
 
 // set server port
-app.listen(process.env.SERVERPORT || 3000, () => {
-    console.log(`app is running on port ${process.env.SERVERPORT}`)
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`app is running on port ${process.env.PORT}`)
 });
 
 /*
